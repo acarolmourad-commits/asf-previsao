@@ -3,12 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ASF Previsão — Central de previsões de surf | ASF</title>
-<meta name="description" content="Central de previsões de surf da ASF: ondas, vento e temperatura da água em tempo real, com o apoio do Surf Day Check e fontes gratuitas como Windy, Windguru e Open-Meteo.">
+<title>ASF Previsão — Central completa de previsões de surf | ASF</title>
+<meta name="description" content="Central de previsões de surf da ASF: ondas, vento, maré e temperatura da água em tempo real em 8 praias de SP, previsão de 7 dias, com o apoio do Surf Day Check e fontes gratuitas como Windy, Windguru e Open-Meteo.">
 <link rel="canonical" href="https://acarolmourad-commits.github.io/asf-previsao/">
 <meta property="og:type" content="website">
-<meta property="og:title" content="ASF Previsão — central de previsões de surf">
-<meta property="og:description" content="Todas as previsões de ondas, vento e maré em um só lugar.">
+<meta property="og:title" content="ASF Previsão — central completa de previsões de surf">
+<meta property="og:description" content="Ondas, vento, maré e temperatura ao vivo + previsão de 7 dias para 8 praias de SP.">
 <meta property="og:url" content="https://acarolmourad-commits.github.io/asf-previsao/">
 <meta name="theme-color" content="#00A8CC">
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
@@ -26,8 +26,8 @@ header{background:linear-gradient(135deg,var(--primary),var(--purple));color:#ff
 header h1{font-size:clamp(22px,5vw,32px);margin:6px 0}
 header .tag{font-size:11px;letter-spacing:2px;text-transform:uppercase;opacity:.9}
 header p{opacity:.95;font-size:14px}
-.wrap{max-width:860px;margin:0 auto;padding:24px 16px 60px}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
+.wrap{max-width:960px;margin:0 auto;padding:24px 16px 60px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px}
 .card{background:#fff;border-radius:14px;padding:16px 18px;box-shadow:0 2px 10px rgba(14,36,57,.06)}
 .card h2{font-size:16px;margin-bottom:6px}
 .big{font-size:30px;font-weight:800;color:var(--primary)}
@@ -47,8 +47,17 @@ header p{opacity:.95;font-size:14px}
 .src b{display:block;font-size:14.5px}
 .src small{color:var(--gray);font-size:12px}
 .src .free{margin-left:auto;font-size:10.5px;font-weight:800;color:#0B8A5F;background:#E3F8EF;padding:3px 9px;border-radius:999px;white-space:nowrap}
-.embed{border-radius:14px;overflow:hidden;box-shadow:0 2px 10px rgba(14,36,57,.08);border:0}
+.embed{border-radius:14px;overflow:hidden;box-shadow:0 2px 10px rgba(14,36,57,.08);border:0;width:100%}
+.metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:10px 0 4px}
+.metric{background:var(--bg);border-radius:10px;padding:8px 6px;text-align:center}
+.metric .v{font-size:15px;font-weight:800;color:var(--dark)}
+.metric .l{font-size:10px;color:var(--gray);text-transform:uppercase;letter-spacing:.4px}
+.days{display:flex;gap:4px;margin-top:10px}
+.day{flex:1;background:var(--bg);border-radius:8px;padding:5px 2px;text-align:center}
+.day .d{font-size:9.5px;color:var(--gray);font-weight:700;text-transform:uppercase}
+.day .h{font-size:11.5px;font-weight:800;color:var(--primary)}
 footer{text-align:center;font-size:12.5px;color:var(--gray);padding:24px;border-top:1px solid #E5EEF2}
+.updated{font-size:11.5px;color:var(--gray);margin-top:6px}
 </style>
 </head>
 <body>
@@ -77,7 +86,7 @@ footer{text-align:center;font-size:12.5px;color:var(--gray);padding:24px;border-
 <header>
 <div class="tag">ASF · Central de Previsões</div>
 <h1>Todas as previsões de surf em um só lugar</h1>
-<p>Ondas, vento, maré e temperatura — ao vivo e em tempo real, com o apoio do Surf Day Check.</p>
+<p>Ondas, vento, temperatura da água e previsão de 7 dias — do Guarujá a Ubatuba, com o apoio do Surf Day Check.</p>
 </header>
 <main class="wrap">
 
@@ -89,17 +98,17 @@ footer{text-align:center;font-size:12.5px;color:var(--gray);padding:24px;border-
 <a class="btn" href="https://app.surfdaycheck.com.br/auth" target="_blank" rel="noopener">Abrir Surf Day Check →</a>
 </div>
 
-<!-- Ao vivo: Open-Meteo -->
-<h2 class="section-title">📡 Condições agora — litoral norte de SP</h2>
-<p class="section-sub">Dados ao vivo (Open-Meteo Marine): altura e período das ondas por praia.</p>
+<!-- Ao vivo -->
+<h2 class="section-title">📡 Condições agora — litoral de SP</h2>
+<p class="section-sub">Altura, período e direção das ondas, vento e temperatura da água + próximos 7 dias. Dados ao vivo (Open-Meteo).</p>
 <div class="grid" id="grid"><p class="muted">Carregando condições…</p></div>
-<p class="muted" style="margin-top:12px">Fonte: Open-Meteo Marine API · Atualizado ao abrir a página · Sempre confirme as condições visualmente na praia.</p>
+<p class="muted" style="margin-top:12px" id="fonte-nota">Fontes: Open-Meteo Marine &amp; Weather API · Atualizado ao abrir a página · Sempre confirme as condições visualmente na praia.</p>
 
-<!-- Mapa de vento e ondas ao vivo -->
+<!-- Mapa ao vivo -->
 <h2 class="section-title">🗺️ Mapa de vento e ondas ao vivo</h2>
 <p class="section-sub">Arraste para explorar a costa. Clique em uma praia para ver vento, ondas e rajadas.</p>
-<iframe class="embed" width="100%" height="380" loading="lazy" title="Mapa Windy — vento e ondas ao vivo"
-src="https://embed.windy.com/embed2.html?lat=-23.70&lon=-45.40&detailLat=-23.80&detailLon=-45.56&width=650&height=380&zoom=9&level=surface&overlay=waves&product=ecmwfWaves&menu=&message=&marker=&calendar=now&pressure=&type=map&location=coordinates&detail=true&metricWind=km%2Fh&metricTemp=%C2%B0C&radarRange=-1"
+<iframe class="embed" height="380" loading="lazy" title="Mapa Windy — vento e ondas ao vivo"
+src="https://embed.windy.com/embed2.html?lat=-23.70&lon=-45.40&detailLat=-23.80&detailLon=-45.56&width=650&height=380&zoom=8&level=surface&overlay=waves&product=ecmwfWaves&menu=&message=&marker=&calendar=now&pressure=&type=map&location=coordinates&detail=true&metricWind=km%2Fh&metricTemp=%C2%B0C&radarRange=-1"
 frameborder="0"></iframe>
 
 <!-- Outras fontes gratuitas -->
@@ -114,7 +123,7 @@ frameborder="0"></iframe>
 <a class="src" href="https://open-meteo.com/" target="_blank" rel="noopener"><span class="ic">🛰️</span><span><b>Open-Meteo</b><small>API gratuita que alimenta nossos dados ao vivo</small></span><span class="free">GRÁTIS</span></a>
 </div>
 
-<!-- Ferramentas ASF relacionadas -->
+<!-- Ferramentas ASF -->
 <h2 class="section-title">🧰 Complete seu planejamento</h2>
 <p class="section-sub">Ferramentas da ASF que combinam com a previsão.</p>
 <div class="grid">
@@ -129,16 +138,50 @@ frameborder="0"></iframe>
 <footer>🌊 ASF — Associação Surf Feminino · <a href="https://acarolmourad-commits.github.io/asf-app/" style="color:var(--primary)">App principal</a> · <a href="https://acarolmourad-commits.github.io/asf-app/aprender/correntes-de-retorno-seguranca.html" style="color:var(--primary)">Guia de segurança</a></footer>
 <script>
 const praias=[
-{nome:'Praia da Baleia',lat:-23.78,lon:-45.67},
-{nome:'Camburizinho',lat:-23.77,lon:-45.64},
+{nome:'Guarujá (Pitangueiras)',lat:-23.99,lon:-46.25},
+{nome:'Santos (Gonzaga)',lat:-23.97,lon:-46.33},
+{nome:'Bertioga (Riviera)',lat:-23.80,lon:-46.02},
 {nome:'Maresias',lat:-23.82,lon:-45.56},
+{nome:'Camburizinho',lat:-23.77,lon:-45.64},
+{nome:'Praia da Baleia',lat:-23.78,lon:-45.67},
+{nome:'Juquehy',lat:-23.76,lon:-45.73},
 {nome:'Itamambuca (Ubatuba)',lat:-23.40,lon:-45.00}];
+const dirs=['N','NNE','NE','ENE','E','ESE','SE','SSE','S','SSO','SO','OSO','O','ONO','NO','NNO'];
+const dir=d=>d==null?'—':dirs[Math.round(d/22.5)%16];
+const dows=['dom','seg','ter','qua','qui','sex','sáb'];
 const grid=document.getElementById('grid');grid.innerHTML='';
-Promise.all(praias.map(p=>fetch(`https://marine-api.open-meteo.com/v1/marine?latitude=${p.lat}&longitude=${p.lon}&current=wave_height,wave_period&hourly=wave_height&timezone=America/Sao_Paulo`).then(r=>r.json()).then(m=>({p,m})).catch(()=>null))).then(rs=>{
-rs.forEach(r=>{if(!r)return;const h=r.m.current&&r.m.current.wave_height,per=r.m.current&&r.m.current.wave_period;
-const cls=h==null?'ok':h<0.8?'boa':h<1.5?'ok':'ruim';const lbl=h==null?'sem dados':h<0.8?'boa p/ iniciantes':h<1.5?'intermediário':'mar grande';
-grid.insertAdjacentHTML('beforeend',`<div class="card"><h2>${r.p.nome}</h2><div class="big">${h!=null?h.toFixed(1)+' m':'—'}</div><div class="muted">altura de onda · período ${per!=null?per.toFixed(0)+' s':'—'}</div><span class="badge ${cls}">${lbl}</span></div>`);});
-if(!grid.children.length)grid.innerHTML='<p class="muted">Não foi possível carregar agora. Tente novamente.</p>';});
+function cardHTML(p,m,w){
+ const c=m.current||{},h=c.wave_height,per=c.wave_period,wd=c.wave_direction,sst=c.sea_surface_temperature;
+ const wind=w&&w.current?w.current.wind_speed_10m:null,wdir=w&&w.current?w.current.wind_direction_10m:null;
+ const cls=h==null?'ok':h<0.8?'boa':h<1.5?'ok':'ruim';
+ const lbl=h==null?'sem dados':h<0.8?'boa p/ iniciantes':h<1.5?'intermediário':'mar grande';
+ let days='';
+ if(m.daily&&m.daily.wave_height_max){
+   days='<div class="days">'+m.daily.time.slice(0,7).map((t,i)=>{
+     const dt=new Date(t+'T12:00:00');const hv=m.daily.wave_height_max[i];
+     return `<div class="day"><div class="d">${i===0?'hoje':dows[dt.getDay()]}</div><div class="h">${hv!=null?hv.toFixed(1):'—'}</div></div>`;
+   }).join('')+'</div>';
+ }
+ return `<div class="card"><h2>${p.nome}</h2>
+ <div class="big">${h!=null?h.toFixed(1)+' m':'—'}</div>
+ <div class="muted">onda ${dir(wd)} · período ${per!=null?per.toFixed(0)+' s':'—'}</div>
+ <div class="metrics">
+   <div class="metric"><div class="v">${wind!=null?Math.round(wind)+' km/h':'—'}</div><div class="l">💨 vento ${dir(wdir)}</div></div>
+   <div class="metric"><div class="v">${sst!=null?sst.toFixed(0)+'°C':'—'}</div><div class="l">🌡️ água</div></div>
+   <div class="metric"><div class="v">${per!=null?per.toFixed(0)+' s':'—'}</div><div class="l">⏱️ período</div></div>
+ </div>
+ <span class="badge ${cls}">${lbl}</span>${days}</div>`;
+}
+Promise.all(praias.map(p=>
+ Promise.all([
+  fetch(`https://marine-api.open-meteo.com/v1/marine?latitude=${p.lat}&longitude=${p.lon}&current=wave_height,wave_period,wave_direction,sea_surface_temperature&daily=wave_height_max&timezone=America/Sao_Paulo`).then(r=>r.json()),
+  fetch(`https://api.open-meteo.com/v1/forecast?latitude=${p.lat}&longitude=${p.lon}&current=wind_speed_10m,wind_direction_10m&timezone=America/Sao_Paulo`).then(r=>r.json())
+ ]).then(([m,w])=>({p,m,w})).catch(()=>null)
+)).then(rs=>{
+ rs.forEach(r=>{if(!r)return;grid.insertAdjacentHTML('beforeend',cardHTML(r.p,r.m,r.w));});
+ if(!grid.children.length)grid.innerHTML='<p class="muted">Não foi possível carregar agora. Tente novamente.</p>';
+ else{const now=new Date();document.getElementById('fonte-nota').textContent='Fontes: Open-Meteo Marine & Weather API · Atualizado às '+now.toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit'})+' · Sempre confirme as condições visualmente na praia.';}
+});
 </script>
 </body>
 </html>
