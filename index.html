@@ -3,12 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ASF Previsão — Ondas, vento e mar para surfistas | ASF</title>
-<meta name="description" content="Previsão de ondas, vento e temperatura da água nas principais praias do litoral norte de SP. Dados ao vivo para planejar sua sessão de surf.">
+<title>ASF Previsão — Central de previsões de surf | ASF</title>
+<meta name="description" content="Central de previsões de surf da ASF: ondas, vento e temperatura da água em tempo real, com o apoio do Surf Day Check e fontes gratuitas como Windy, Windguru e Open-Meteo.">
 <link rel="canonical" href="https://acarolmourad-commits.github.io/asf-previsao/">
 <meta property="og:type" content="website">
-<meta property="og:title" content="ASF Previsão — ondas e vento ao vivo">
-<meta property="og:description" content="Condições do mar nas praias do litoral norte de SP, ao vivo.">
+<meta property="og:title" content="ASF Previsão — central de previsões de surf">
+<meta property="og:description" content="Todas as previsões de ondas, vento e maré em um só lugar.">
 <meta property="og:url" content="https://acarolmourad-commits.github.io/asf-previsao/">
 <meta name="theme-color" content="#00A8CC">
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
@@ -34,6 +34,20 @@ header p{opacity:.95;font-size:14px}
 .muted{color:var(--gray);font-size:12.5px}
 .badge{display:inline-block;font-size:11px;font-weight:700;padding:3px 10px;border-radius:999px;margin-top:8px}
 .boa{background:#E3F8EF;color:#0B8A5F}.ok{background:#FFF6E0;color:#9A6B00}.ruim{background:#FDE8E8;color:#B42318}
+.section-title{font-size:18px;font-weight:800;margin:28px 0 4px}
+.section-sub{color:var(--gray);font-size:13px;margin-bottom:14px}
+.partner{background:linear-gradient(135deg,#0E2439,#00A8CC);color:#fff;border-radius:16px;padding:22px;text-align:center;box-shadow:0 6px 20px rgba(0,168,204,.25)}
+.partner h2{font-size:20px;margin-bottom:6px}
+.partner p{font-size:13.5px;opacity:.92;margin-bottom:14px}
+.partner .btn{display:inline-block;background:#fff;color:#0E2439;font-weight:800;font-size:14px;padding:12px 26px;border-radius:12px;text-decoration:none}
+.partner .btn:hover{filter:brightness(.95)}
+.src{display:flex;gap:12px;align-items:center;background:#fff;border-radius:14px;padding:14px 16px;box-shadow:0 2px 10px rgba(14,36,57,.06);text-decoration:none;color:inherit;border:1.5px solid transparent;transition:.15s}
+.src:hover{border-color:var(--primary);transform:translateY(-2px)}
+.src .ic{font-size:26px}
+.src b{display:block;font-size:14.5px}
+.src small{color:var(--gray);font-size:12px}
+.src .free{margin-left:auto;font-size:10.5px;font-weight:800;color:#0B8A5F;background:#E3F8EF;padding:3px 9px;border-radius:999px;white-space:nowrap}
+.embed{border-radius:14px;overflow:hidden;box-shadow:0 2px 10px rgba(14,36,57,.08);border:0}
 footer{text-align:center;font-size:12.5px;color:var(--gray);padding:24px;border-top:1px solid #E5EEF2}
 </style>
 </head>
@@ -61,13 +75,56 @@ footer{text-align:center;font-size:12.5px;color:var(--gray);padding:24px;border-
 <a href="https://acarolmourad-commits.github.io/asf-app/aprender/">📚 Guias</a>
 </nav>
 <header>
-<div class="tag">ASF · Previsão</div>
-<h1>Condições do mar agora</h1>
-<p>Ondas, vento e temperatura da água — dados ao vivo do Open-Meteo para o litoral norte de SP.</p>
+<div class="tag">ASF · Central de Previsões</div>
+<h1>Todas as previsões de surf em um só lugar</h1>
+<p>Ondas, vento, maré e temperatura — ao vivo e em tempo real, com o apoio do Surf Day Check.</p>
 </header>
 <main class="wrap">
+
+<!-- Parceiro oficial -->
+<div class="partner">
+<div style="font-size:11px;letter-spacing:2px;text-transform:uppercase;opacity:.85">🤝 Parceiro oficial ASF</div>
+<h2>🌊 Surf Day Check — previsões em tempo real</h2>
+<p>Condições do mar atualizadas em tempo real para o seu pico. Faça login gratuitamente e confira antes de sair de casa!</p>
+<a class="btn" href="https://app.surfdaycheck.com.br/auth" target="_blank" rel="noopener">Abrir Surf Day Check →</a>
+</div>
+
+<!-- Ao vivo: Open-Meteo -->
+<h2 class="section-title">📡 Condições agora — litoral norte de SP</h2>
+<p class="section-sub">Dados ao vivo (Open-Meteo Marine): altura e período das ondas por praia.</p>
 <div class="grid" id="grid"><p class="muted">Carregando condições…</p></div>
-<p class="muted" style="margin-top:16px">Fonte: Open-Meteo Marine API · Atualizado ao abrir a página · Sempre confirme as condições visualmente na praia. Veja também a <a href="https://acarolmourad-commits.github.io/asf-mare/" style="color:var(--primary)">tábua de marés</a>.</p>
+<p class="muted" style="margin-top:12px">Fonte: Open-Meteo Marine API · Atualizado ao abrir a página · Sempre confirme as condições visualmente na praia.</p>
+
+<!-- Mapa de vento e ondas ao vivo -->
+<h2 class="section-title">🗺️ Mapa de vento e ondas ao vivo</h2>
+<p class="section-sub">Arraste para explorar a costa. Clique em uma praia para ver vento, ondas e rajadas.</p>
+<iframe class="embed" width="100%" height="380" loading="lazy" title="Mapa Windy — vento e ondas ao vivo"
+src="https://embed.windy.com/embed2.html?lat=-23.70&lon=-45.40&detailLat=-23.80&detailLon=-45.56&width=650&height=380&zoom=9&level=surface&overlay=waves&product=ecmwfWaves&menu=&message=&marker=&calendar=now&pressure=&type=map&location=coordinates&detail=true&metricWind=km%2Fh&metricTemp=%C2%B0C&radarRange=-1"
+frameborder="0"></iframe>
+
+<!-- Outras fontes gratuitas -->
+<h2 class="section-title">🌐 Outras fontes de previsão gratuitas</h2>
+<p class="section-sub">Compare previsões de diferentes modelos antes de decidir o pico.</p>
+<div class="grid">
+<a class="src" href="https://app.surfdaycheck.com.br/auth" target="_blank" rel="noopener"><span class="ic">🌊</span><span><b>Surf Day Check</b><small>Tempo real · parceiro ASF</small></span><span class="free">GRÁTIS</span></a>
+<a class="src" href="https://www.windy.com/-23.802/-45.556?waves,-23.802,-45.556,9" target="_blank" rel="noopener"><span class="ic">💨</span><span><b>Windy</b><small>Vento, ondas e rajadas em mapa animado</small></span><span class="free">GRÁTIS</span></a>
+<a class="src" href="https://www.windguru.cz/" target="_blank" rel="noopener"><span class="ic">📊</span><span><b>Windguru</b><small>Tabelas detalhadas de swell e vento</small></span><span class="free">GRÁTIS</span></a>
+<a class="src" href="https://pt.surfline.com/" target="_blank" rel="noopener"><span class="ic">🏄‍♀️</span><span><b>Surfline</b><small>Previsão por pico com rating de condições</small></span><span class="free">GRÁTIS</span></a>
+<a class="src" href="https://www.surf-forecast.com/" target="_blank" rel="noopener"><span class="ic">📈</span><span><b>Surf-Forecast</b><small>Swell, vento e maré por praia</small></span><span class="free">GRÁTIS</span></a>
+<a class="src" href="https://open-meteo.com/" target="_blank" rel="noopener"><span class="ic">🛰️</span><span><b>Open-Meteo</b><small>API gratuita que alimenta nossos dados ao vivo</small></span><span class="free">GRÁTIS</span></a>
+</div>
+
+<!-- Ferramentas ASF relacionadas -->
+<h2 class="section-title">🧰 Complete seu planejamento</h2>
+<p class="section-sub">Ferramentas da ASF que combinam com a previsão.</p>
+<div class="grid">
+<a class="src" href="https://acarolmourad-commits.github.io/asf-mare/"><span class="ic">🌙</span><span><b>Tábua de Marés ASF</b><small>Fase da lua e horários das marés</small></span></a>
+<a class="src" href="https://acarolmourad-commits.github.io/asf-mapa/"><span class="ic">🗺️</span><span><b>Mapa de Picos ASF</b><small>Encontre picos de surf por região</small></span></a>
+<a class="src" href="https://acarolmourad-commits.github.io/asf-praias/"><span class="ic">🏖️</span><span><b>Guia de Praias ASF</b><small>Características de cada praia</small></span></a>
+<a class="src" href="https://acarolmourad-commits.github.io/asf-seguranca/"><span class="ic">🛟</span><span><b>Segurança no Mar</b><small>Correntes de retorno e prevenção</small></span></a>
+</div>
+
+<p class="muted" style="margin-top:20px">💡 <strong>Dica:</strong> nenhuma previsão substitui a observação do mar. Chegue na praia, observe por 10–15 minutos e, na dúvida, não entre. 🌊</p>
 </main>
 <footer>🌊 ASF — Associação Surf Feminino · <a href="https://acarolmourad-commits.github.io/asf-app/" style="color:var(--primary)">App principal</a> · <a href="https://acarolmourad-commits.github.io/asf-app/aprender/correntes-de-retorno-seguranca.html" style="color:var(--primary)">Guia de segurança</a></footer>
 <script>
