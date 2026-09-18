@@ -63,6 +63,34 @@ header p{opacity:.95;font-size:14px}
 .updated{font-size:11.5px;color:var(--gray);margin-top:10px;text-align:right}
 footer{text-align:center;font-size:12.5px;color:var(--gray);padding:24px;border-top:1px solid #E5EEF2}
 </style>
+<style>.faq details{background:#fff;border-radius:14px;padding:14px 18px;margin:10px auto;max-width:860px;box-shadow:0 2px 10px rgba(14,36,57,.06);text-align:left}.faq summary{font-weight:700;cursor:pointer;font-size:14.5px}.faq p{font-size:14px;margin-top:8px;color:#5A6B7A}.faq h2{font-size:19px;margin:28px auto 12px;max-width:860px;text-align:left}</style>
+<!-- ========== SEO Padrão Google (rede ASF) ========== -->
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta name="googlebot" content="index, follow">
+<meta name="author" content="ASF — Associação de Surf Feminino">
+<meta name="geo.region" content="BR-SP">
+<meta name="geo.placename" content="Litoral Norte de São Paulo">
+<meta name="language" content="pt-BR">
+<meta name="theme-color" content="#ff4d8d">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="ASF — Associação de Surf Feminino">
+<meta property="og:title" content="ASF Previsão — Central de previsões de surf do litoral norte de SP">
+<meta property="og:description" content="Central de previsões de surf da ASF: ondas, vento, maré e temperatura da água em tempo real para 8 praias de SP, previsão de 7 dias e fontes gratuitas.">
+<meta property="og:url" content="https://acarolmourad-commits.github.io/asf-previsao/">
+<meta property="og:locale" content="pt_BR">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ASF Previsão — Central de previsões de surf do litoral norte de SP">
+<meta name="twitter:description" content="Central de previsões de surf da ASF: ondas, vento, maré e temperatura da água em tempo real para 8 praias de SP, previsão de 7 dias e fontes gratuitas.">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"ASF Previsão","url":"https://acarolmourad-commits.github.io/asf-previsao/","applicationCategory":"WeatherApplication","operatingSystem":"Web","inLanguage":"pt-BR","isPartOf":{"@type":"WebSite","name":"ASF — Associação Surf Feminino","url":"https://acarolmourad-commits.github.io/asf-app/"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"ASF App","item":"https://acarolmourad-commits.github.io/asf-app/"},{"@type":"ListItem","position":2,"name":"ASF Previsão","item":"https://acarolmourad-commits.github.io/asf-previsao/"}]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Como funciona a previsão de surf da ASF?","acceptedAnswer":{"@type":"Answer","text":"A central usa dados gratuitos do Open-Meteo (marine + forecast) para mostrar altura, período e direção das ondas, vento, rajadas e temperatura da água em 8 praias do litoral norte de SP, com previsão de 7 dias."}},{"@type":"Question","name":"O que significa o período da onda na previsão?","acceptedAnswer":{"@type":"Answer","text":"O período é o intervalo entre ondas, em segundos. Períodos acima de 10-12s indicam swell de fundo, com ondas mais organizadas e potentes; abaixo de 8s costuma ser marol local gerado por vento."}},{"@type":"Question","name":"Qual a melhor fonte de previsão de surf para o litoral norte de SP?","acceptedAnswer":{"@type":"Answer","text":"Além da ASF Previsão (Open-Meteo), Surf Day Check, Windy e Windguru são fontes gratuitas populares. Cruzar duas fontes aumenta a confiabilidade da previsão."}},{"@type":"Question","name":"Qual a temperatura da água no litoral norte de SP?","acceptedAnswer":{"@type":"Answer","text":"Varia entre cerca de 19°C no inverno e 26°C no verão. No inverno, recomenda-se roupa de neoprene 3/2mm; no verão, lycra ou short já costumam bastar."}}]}
+</script>
+<!-- ========== Fim SEO ========== -->
 </head>
 <body>
 <nav>
@@ -210,5 +238,12 @@ Promise.all(praias.map(p=>{
   document.getElementById('updated-now').textContent='Atualizado às '+now.toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit'})+' · Fonte: Open-Meteo (marine + forecast)';
 });
 </script>
+<section class="faq">
+<h2>Perguntas frequentes</h2>
+<details><summary>Como funciona a previsão de surf da ASF?</summary><p>A central usa dados gratuitos do Open-Meteo (marine + forecast) para mostrar altura, período e direção das ondas, vento, rajadas e temperatura da água em 8 praias do litoral norte de SP, com previsão de 7 dias.</p></details>
+<details><summary>O que significa o período da onda na previsão?</summary><p>O período é o intervalo entre ondas, em segundos. Períodos acima de 10-12s indicam swell de fundo, com ondas mais organizadas e potentes; abaixo de 8s costuma ser marol local gerado por vento.</p></details>
+<details><summary>Qual a melhor fonte de previsão de surf para o litoral norte de SP?</summary><p>Além da ASF Previsão (Open-Meteo), Surf Day Check, Windy e Windguru são fontes gratuitas populares. Cruzar duas fontes aumenta a confiabilidade da previsão.</p></details>
+<details><summary>Qual a temperatura da água no litoral norte de SP?</summary><p>Varia entre cerca de 19°C no inverno e 26°C no verão. No inverno, recomenda-se roupa de neoprene 3/2mm; no verão, lycra ou short já costumam bastar.</p></details>
+</section>
 </body>
 </html>
