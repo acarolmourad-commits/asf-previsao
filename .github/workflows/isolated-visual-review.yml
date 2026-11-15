@@ -1,0 +1,36 @@
+name: Isolated forecast visual review
+on:
+  push:
+    branches: [fix/asf-forecast-links-20261115]
+    paths: ['index.html', 'tests/visual-preview.cjs', '.github/workflows/isolated-visual-review.yml']
+permissions:
+  contents: read
+jobs:
+  visual:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install official browser tooling
+        run: |
+          npm install --prefix "$RUNNER_TEMP/visual" playwright@1.56.1 --no-audit --no-fund
+          "$RUNNER_TEMP/visual/node_modules/.bin/playwright" install --with-deps chromium --only-shell
+      - name: Render reviewed page with fictitious data and no external requests
+        env:
+          NODE_PATH: ${{ runner.temp }}/visual/node_modules
+        run: |
+          mkdir qa-screenshots
+          node tests/visual-preview.cjs
+          test "$(find qa-screenshots -type f | wc -l)" -eq 4
+          test -z "$(find qa-screenshots -type f ! -name '*.png')"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: forecast-visual-FICTITIOUS-DATA
+          path: qa-screenshots/*.png
+          retention-days: 1
+          if-no-files-found: error
