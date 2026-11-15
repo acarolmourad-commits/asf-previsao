@@ -2,8 +2,8 @@ const {JSDOM}=require('jsdom'),fs=require('fs'),assert=require('node:assert/stri
 const html=fs.readFileSync('index.html','utf8');
 const script=[...html.matchAll(/<script[^>]*>([\s\S]*?)<\/script>/g)].map(x=>x[1]).find(x=>x.includes('const praias=')||x.includes('const praias ='));
 async function run(data,status=200){
- const d=new JSDOM(html,{runScripts:'outside-only'});d.window.fetch=async url=>({ok:status===200,status,json:async()=>typeof data==='function'?data(url):data});
- d.window.eval(script);await new Promise(r=>setTimeout(r,25));return d.window.document;
+ const d=new JSDOM(html,{runScripts:'outside-only',pretendToBeVisual:true});d.window.fetch=async url=>({ok:status===200,status,json:async()=>typeof data==='function'?data(url):data});
+ d.window.setInterval=()=>0;d.window.eval(script);await new Promise(r=>setTimeout(r,25));return d.window.document;
 }
 (async()=>{
  assert(script);
