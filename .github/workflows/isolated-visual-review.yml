@@ -1,7 +1,6 @@
 name: Isolated forecast visual review
 on:
-  push:
-    branches: [fix/asf-forecast-links-20261115]
+  pull_request:
     paths: ['index.html', 'tests/visual-preview.cjs', '.github/workflows/isolated-visual-review.yml']
 permissions:
   contents: read
