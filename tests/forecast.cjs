@@ -1,8 +1,8 @@
 const {JSDOM}=require('jsdom'),fs=require('fs'),assert=require('node:assert/strict');
 const html=fs.readFileSync('index.html','utf8');
 const script=[...html.matchAll(/<script[^>]*>([\s\S]*?)<\/script>/g)].map(x=>x[1]).find(x=>x.includes('const praias=')||x.includes('const praias ='));
-async function run(data,status=200){
- const d=new JSDOM(html,{runScripts:'outside-only',pretendToBeVisual:true});d.window.fetch=async url=>({ok:status===200,status,json:async()=>typeof data==='function'?data(url):data});
+async function run(data,status=200,query=""){
+ const d=new JSDOM(html,{runScripts:'outside-only',pretendToBeVisual:true,url:'https://previsao.asf.surf/'+query});d.window.fetch=async url=>({ok:status===200,status,json:async()=>typeof data==='function'?data(url):data});
  d.window.setInterval=()=>0;d.window.eval(script);await new Promise(r=>setTimeout(r,25));return d.window.document;
 }
 (async()=>{
@@ -12,6 +12,14 @@ async function run(data,status=200){
  for(const [h,label] of [[0,'abaixo de 0,8'],[0.79,'abaixo de 0,8'],[0.8,'0,8 a menos'],[1.5,'a partir']]){
  const d=await run({current:{wave_height:h,wave_period:9},daily:{time:['2026-11-15'],wave_height_max:[h]}});
  assert.match(d.querySelector('#grid .badge').textContent,new RegExp(label));assert.match(d.querySelector('#updated-now').textContent,/Consulta às/);assert.doesNotMatch(d.querySelector('#grid').textContent,/iniciantes|intermediário/);console.log('PASS boundary',h);}
+ const en=await run({current:{wave_height:0.8,wave_period:7,wave_direction:270}},200,'?lang=en');
+ assert.equal(en.documentElement.lang,'en');
+ assert.equal(en.querySelector('h1').textContent,'Surf forecasts in one place');
+ assert.match(en.querySelector('#grid').textContent,/waves · period 7 s · direction W/);
+ assert.match(en.querySelector('#updated-now').textContent,/Current forecasts: 8\/8/);
+ const offline=await run({},429,'?lang=en');
+ assert.match(offline.querySelector('#updated-now').textContent,/Data unavailable/);
+ console.log('PASS English forecast and unavailable state');
  const d=await run({daily:{time:['2026-11-15'],wave_height_max:[0.6]}});
  assert.match(d.querySelector('#updated-now').textContent,/Dados atuais: 0/);assert.equal(d.querySelectorAll('#grid .card').length,0);console.log('PASS daily-only');
 })();

@@ -100,32 +100,33 @@ footer{text-align:center;font-size:12.5px;color:var(--gray);padding:24px;border-
 <body>
 
 <header>
-<div class="tag">ASF · Central de Previsões</div>
-<h1>Todas as previsões de surf em um só lugar</h1>
-<p>Ondas, vento e temperatura da água — previsão de modelo para 8 praias, previsão de 7 dias e mapa interativo, com o apoio do Surf Day Check.</p>
+<nav aria-label="Idioma / Language"><a href="./" lang="pt-BR" style="color:inherit">Português</a> · <a href="?lang=en" lang="en" style="color:inherit">English</a></nav>
+<div class="tag" data-en="ASF · Forecast centre">ASF · Central de Previsões</div>
+<h1 data-en="Surf forecasts in one place">Todas as previsões de surf em um só lugar</h1>
+<p data-en="Modelled waves, wind and water temperatures for eight beaches, a seven-day outlook and an interactive map, supported by Surf Day Check.">Ondas, vento e temperatura da água — previsão de modelo para 8 praias, previsão de 7 dias e mapa interativo, com o apoio do Surf Day Check.</p>
 </header>
 <main class="wrap">
 
 <!-- Parceiro oficial -->
 <div class="partner">
-<div style="font-size:11px;letter-spacing:2px;text-transform:uppercase;opacity:.85">🤝 Parceiro oficial ASF</div>
-<h2>🌊 Surf Day Check — consulta de previsões</h2>
-<p>Consulte a previsão no Surf Day Check. Confira no serviço os horários dos dados e as condições de acesso antes de sair de casa.</p>
-<a class="btn" href="https://app.surfdaycheck.com.br/auth" target="_blank" rel="noopener">Abrir Surf Day Check →</a>
+<div style="font-size:11px;letter-spacing:2px;text-transform:uppercase;opacity:.85" data-en="🤝 Official ASF partner">🤝 Parceiro oficial ASF</div>
+<h2 data-en="🌊 Surf Day Check forecasts">🌊 Surf Day Check — consulta de previsões</h2>
+<p data-en="Check Surf Day Check for forecasts, data times and access details before leaving home.">Consulte a previsão no Surf Day Check. Confira no serviço os horários dos dados e as condições de acesso antes de sair de casa.</p>
+<a class="btn" href="https://app.surfdaycheck.com.br/auth" target="_blank" rel="noopener" data-en="Open Surf Day Check →">Abrir Surf Day Check →</a>
 </div>
 
 <!-- Condições de referência transferidas da home ASF -->
 
 
 <!-- Previsão de modelo: Open-Meteo -->
-<h2 class="section-title">📡 Condições agora — 8 praias de SP</h2>
-<p class="section-sub">Altura, período e direção das ondas, vento e temperatura da água — previsão de modelo (Open-Meteo), não medição local. Pontos aproximados; a API seleciona uma célula marinha que pode diferir da praia. Nova consulta a cada 15 minutos enquanto a página está visível e ao retornar após esse intervalo; os modelos têm frequência própria de atualização.</p>
+<h2 class="section-title" data-en="📡 Current forecast for eight beaches in São Paulo">📡 Condições agora — 8 praias de SP</h2>
+<p class="section-sub" data-en="Wave height, period, direction, wind and water temperature come from Open-Meteo models. These are forecasts for nearby marine grid cells, not measurements at the beach. This page checks every 15 minutes while visible and when reopened after that interval. Models update on their own schedules.">Altura, período e direção das ondas, vento e temperatura da água — previsão de modelo (Open-Meteo), não medição local. Pontos aproximados; a API seleciona uma célula marinha que pode diferir da praia. Nova consulta a cada 15 minutos enquanto a página está visível e ao retornar após esse intervalo; os modelos têm frequência própria de atualização.</p>
 <div class="grid" id="grid"><p class="muted">Consultando previsão de modelo…</p></div>
 <p class="updated" id="updated-now"></p>
 
 <!-- Previsão 7 dias -->
-<h2 class="section-title">📅 Previsão de 7 dias — altura máxima das ondas</h2>
-<p class="section-sub">Compare os próximos dias e escolha a melhor janela para a sua sessão.</p>
+<h2 class="section-title" data-en="📅 Seven-day forecast — maximum wave height">📅 Previsão de 7 dias — altura máxima das ondas</h2>
+<p class="section-sub" data-en="Compare the next few days when planning your session.">Compare os próximos dias e escolha a melhor janela para a sua sessão.</p>
 <div class="table-scroll">
 <table class="ftable" id="ftable">
 <thead><tr id="fhead"><th>Praia</th></tr></thead>
@@ -133,44 +134,54 @@ footer{text-align:center;font-size:12.5px;color:var(--gray);padding:24px;border-
 </table>
 </div>
 <div class="legend">
-<span><i style="background:#0B8A5F"></i>altura abaixo de 0,8 m</span>
-<span><i style="background:#9A6B00"></i>altura de 0,8 a menos de 1,5 m</span>
-<span><i style="background:#B42318"></i>altura a partir de 1,5 m</span>
+<span><i style="background:#0B8A5F"></i><span data-en="height below 0.8 m">altura abaixo de 0,8 m</span></span>
+<span><i style="background:#9A6B00"></i><span data-en="height from 0.8 to under 1.5 m">altura de 0,8 a menos de 1,5 m</span></span>
+<span><i style="background:#B42318"></i><span data-en="height of 1.5 m or more">altura a partir de 1,5 m</span></span>
 </div>
 
 <!-- Mapa interativo de vento e ondas -->
-<h2 class="section-title">🗺️ Mapa interativo de vento e ondas</h2>
-<p class="section-sub">Arraste para explorar a costa. Clique em uma praia para ver vento, ondas e rajadas.</p>
+<h2 class="section-title" data-en="🗺️ Interactive wind and wave map">🗺️ Mapa interativo de vento e ondas</h2>
+<p class="section-sub" data-en="Drag to explore the coast. Select a beach to see wind, waves and gusts.">Arraste para explorar a costa. Clique em uma praia para ver vento, ondas e rajadas.</p>
 <iframe class="embed" width="100%" height="380" loading="lazy" title="Mapa Windy — previsão de vento e ondas"
 src="https://embed.windy.com/embed2.html?lat=-23.70&lon=-45.40&detailLat=-23.80&detailLon=-45.56&width=650&height=380&zoom=9&level=surface&overlay=waves&product=ecmwfWaves&menu=&message=&marker=&calendar=now&pressure=&type=map&location=coordinates&detail=true&metricWind=km%2Fh&metricTemp=%C2%B0C&radarRange=-1"
 frameborder="0"></iframe>
 
 <!-- Outras fontes gratuitas -->
-<h2 class="section-title">🌐 Outras fontes de previsão</h2>
-<p class="section-sub">Compare previsões de diferentes modelos antes de decidir o pico.</p>
+<h2 class="section-title" data-en="🌐 Other forecast sources">🌐 Outras fontes de previsão</h2>
+<p class="section-sub" data-en="Compare several models before choosing your surf spot.">Compare previsões de diferentes modelos antes de decidir o pico.</p>
 <div class="grid">
-<a class="src" href="https://app.surfdaycheck.com.br/auth" target="_blank" rel="noopener"><span class="ic">🌊</span><span><b>Surf Day Check</b><small>Previsões · parceiro ASF</small></span></a>
-<a class="src" href="https://www.windy.com/-23.802/-45.556?waves,-23.802,-45.556,9" target="_blank" rel="noopener"><span class="ic">💨</span><span><b>Windy</b><small>Vento, ondas e rajadas em mapa animado</small></span></a>
-<a class="src" href="https://www.windguru.cz/" target="_blank" rel="noopener"><span class="ic">📊</span><span><b>Windguru</b><small>Tabelas detalhadas de swell e vento</small></span></a>
-<a class="src" href="https://www.surfline.com/" target="_blank" rel="noopener"><span class="ic">🏄‍♀️</span><span><b>Surfline</b><small>Previsão por pico com rating de condições</small></span></a>
-<a class="src" href="https://www.surf-forecast.com/" target="_blank" rel="noopener"><span class="ic">📈</span><span><b>Surf-Forecast</b><small>Swell, vento e maré por praia</small></span></a>
-<a class="src" href="https://open-meteo.com/" target="_blank" rel="noopener"><span class="ic">🛰️</span><span><b>Open-Meteo</b><small>Dados de modelos meteorológicos; consulte os termos de uso</small></span></a>
+<a class="src" href="https://app.surfdaycheck.com.br/auth" target="_blank" rel="noopener"><span class="ic">🌊</span><span><b>Surf Day Check</b><small data-en="Forecasts · ASF partner">Previsões · parceiro ASF</small></span></a>
+<a class="src" href="https://www.windy.com/-23.802/-45.556?waves,-23.802,-45.556,9" target="_blank" rel="noopener"><span class="ic">💨</span><span><b>Windy</b><small data-en="Animated wind, wave and gust map">Vento, ondas e rajadas em mapa animado</small></span></a>
+<a class="src" href="https://www.windguru.cz/" target="_blank" rel="noopener"><span class="ic">📊</span><span><b>Windguru</b><small data-en="Detailed swell and wind tables">Tabelas detalhadas de swell e vento</small></span></a>
+<a class="src" href="https://www.surfline.com/" target="_blank" rel="noopener"><span class="ic">🏄‍♀️</span><span><b>Surfline</b><small data-en="Spot forecasts and conditions ratings">Previsão por pico com rating de condições</small></span></a>
+<a class="src" href="https://www.surf-forecast.com/" target="_blank" rel="noopener"><span class="ic">📈</span><span><b>Surf-Forecast</b><small data-en="Swell, wind and tides by beach">Swell, vento e maré por praia</small></span></a>
+<a class="src" href="https://open-meteo.com/" target="_blank" rel="noopener"><span class="ic">🛰️</span><span><b>Open-Meteo</b><small data-en="Weather model data; check the terms of use">Dados de modelos meteorológicos; consulte os termos de uso</small></span></a>
 </div>
 
 <!-- Ferramentas ASF relacionadas -->
-<h2 class="section-title">🧰 Complete seu planejamento</h2>
-<p class="section-sub">Ferramentas da ASF que combinam com a previsão.</p>
+<h2 class="section-title" data-en="🧰 Plan the rest of your session">🧰 Complete seu planejamento</h2>
+<p class="section-sub" data-en="ASF tools to use alongside the forecast.">Ferramentas da ASF que combinam com a previsão.</p>
 <div class="grid">
-<a class="src" href="https://pam.marinha.mil.br/tabuamares/tabuamares.html" target="_blank" rel="noopener"><span class="ic">🌙</span><span><b>Tábua de Marés — Marinha</b><small>Horários e alturas por estação; confira a data e o fuso</small></span></a>
-<a class="src" href="https://acarolmourad-commits.github.io/asf-mapa/"><span class="ic">🗺️</span><span><b>Mapa de Picos ASF</b><small>Encontre picos de surf por região</small></span></a>
-<a class="src" href="https://acarolmourad-commits.github.io/asf-praias/"><span class="ic">🏖️</span><span><b>Guia de Praias ASF</b><small>Características de cada praia</small></span></a>
-<a class="src" href="https://acarolmourad-commits.github.io/asf-seguranca/"><span class="ic">🛟</span><span><b>Segurança no Mar</b><small>Correntes de retorno e prevenção</small></span></a>
+<a class="src" href="https://pam.marinha.mil.br/tabuamares/tabuamares.html" target="_blank" rel="noopener"><span class="ic">🌙</span><span><b data-en="Brazilian Navy tide tables">Tábua de Marés — Marinha</b><small data-en="Times and heights by station; check the date and time zone">Horários e alturas por estação; confira a data e o fuso</small></span></a>
+<a class="src" href="https://acarolmourad-commits.github.io/asf-mapa/"><span class="ic">🗺️</span><span><b data-en="ASF surf spot map">Mapa de Picos ASF</b><small data-en="Find surf spots by region">Encontre picos de surf por região</small></span></a>
+<a class="src" href="https://acarolmourad-commits.github.io/asf-praias/"><span class="ic">🏖️</span><span><b data-en="ASF beach guide">Guia de Praias ASF</b><small data-en="Explore each beach">Características de cada praia</small></span></a>
+<a class="src" href="https://acarolmourad-commits.github.io/asf-seguranca/"><span class="ic">🛟</span><span><b data-en="Ocean safety">Segurança no Mar</b><small data-en="Rip currents and prevention">Correntes de retorno e prevenção</small></span></a>
 </div>
 
-<p class="muted" style="margin-top:20px">💡 <strong>Dica:</strong> As faixas indicam apenas altura, não segurança ou adequação ao nível da surfista. Correntes, vento, período e condições locais também importam. Nenhuma previsão substitui a observação do mar. Chegue na praia, observe por 10–15 minutos e, na dúvida, não entre. 🌊</p>
+<p class="muted" style="margin-top:20px">💡 <strong data-en="Tip:">Dica:</strong> <span data-en="The colours describe wave height only. Currents, wind, period and local conditions also matter. Observe the sea for 10–15 minutes when you arrive. If in doubt, stay out.">As faixas indicam apenas altura, não segurança ou adequação ao nível da surfista. Correntes, vento, período e condições locais também importam. Nenhuma previsão substitui a observação do mar. Chegue na praia, observe por 10–15 minutos e, na dúvida, não entre. 🌊</span></p>
 </main>
-<footer>🌊 ASF — Associação Surf Feminino · <a href="https://acarolmourad-commits.github.io/asf-app/" style="color:var(--primary)">App principal</a> · <a href="https://acarolmourad-commits.github.io/asf-app/aprender/correntes-de-retorno-seguranca.html" style="color:var(--primary)">Guia de segurança</a></footer>
+<footer>🌊 ASF — Associação Surf Feminino · <a href="https://acarolmourad-commits.github.io/asf-app/" style="color:var(--primary)" data-en="Main app">App principal</a> · <a href="https://acarolmourad-commits.github.io/asf-app/aprender/correntes-de-retorno-seguranca.html" style="color:var(--primary)" data-en="Safety guide">Guia de segurança</a></footer>
 <script>
+const english = new URLSearchParams(location.search).get('lang') === 'en';
+const label = (pt, en) => english ? en : pt;
+if (english) {
+  document.documentElement.lang = 'en';
+  document.title = 'ASF Surf Forecast — Waves and wind for eight beaches';
+  document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('[data-en]').forEach(el => { el.textContent = el.dataset.en; });
+    document.querySelector('iframe.embed').title = 'Windy wind and wave forecast map';
+  });
+}
 const praias=[
 {nome:'Região de Bertioga',lat:-23.85,lon:-46.13},
 {nome:'Região de Guarujá',lat:-23.99,lon:-46.26},
@@ -181,11 +192,11 @@ const praias=[
 {nome:'Praia da Baleia',lat:-23.78,lon:-45.67},
 {nome:'Itamambuca (Ubatuba)',lat:-23.4045,lon:-45.0074}];
 
-const DIAS=['dom','seg','ter','qua','qui','sex','sáb'];
-function dirCompass(g){const d=['N','NE','L','SE','S','SO','O','NO'];return d[Math.round(g/45)%8];}
+const DIAS=english ? ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'] : ['dom','seg','ter','qua','qui','sex','sáb'];
+function dirCompass(g){const d=english ? ['N','NE','E','SE','S','SW','W','NW'] : ['N','NE','L','SE','S','SO','O','NO'];return d[Math.round(g/45)%8];}
 function validHeight(h){return Number.isFinite(h)&&h>=0;}
 function clsFor(h){return !validHeight(h)?'ok':h<0.8?'boa':h<1.5?'ok':'ruim';}
-function lblFor(h){return !validHeight(h)?'sem dados':h<0.8?'altura abaixo de 0,8 m':h<1.5?'altura de 0,8 a menos de 1,5 m':'altura a partir de 1,5 m';}
+function lblFor(h){return !validHeight(h)?label('sem dados','no data'):h<0.8?label('altura abaixo de 0,8 m','height below 0.8 m'):h<1.5?label('altura de 0,8 a menos de 1,5 m','height from 0.8 to under 1.5 m'):label('altura a partir de 1,5 m','height of 1.5 m or more');}
 async function fetchData(url){const controller=new AbortController();const timeout=setTimeout(()=>controller.abort(),12000);try{const r=await fetch(url,{signal:controller.signal});if(!r.ok)throw new Error('HTTP '+r.status);const data=await r.json();if(!data||data.error)throw new Error('Dados indisponíveis');return data;}finally{clearTimeout(timeout);}}
 function numeric(v){return Number.isFinite(v)?v:null;}
 
@@ -193,13 +204,13 @@ const grid=document.getElementById('grid');grid.innerHTML='';
 const fbody=document.getElementById('fbody');fbody.innerHTML='';
 const fhead=document.getElementById('fhead');
 let diasHeader=false, refreshInFlight=false, lastAttempt=0;
-function modelTime(value){return typeof value==='string'&&/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}$/.test(value)?value.replace('T',' '):'horário indisponível';}
+function modelTime(value){return typeof value==='string'&&/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}$/.test(value)?value.replace('T',' '):label('horário indisponível','time unavailable');}
 function refreshForecast(){
  if(refreshInFlight||document.hidden||Date.now()-lastAttempt<15*60*1000)return;
  refreshInFlight=true;lastAttempt=Date.now();diasHeader=false;
- grid.innerHTML='<p class="muted">Consultando previsão de modelo…</p>';
- fbody.innerHTML='';fhead.innerHTML='<th>Praia</th>';
- document.getElementById('updated-now').textContent='Consulta em andamento';
+ grid.innerHTML=label('<p class="muted">Consultando previsão de modelo…</p>','<p class="muted">Checking model forecast…</p>');
+ fbody.innerHTML='';fhead.innerHTML=label('<th>Praia</th>','<th>Beach</th>');
+ document.getElementById('updated-now').textContent=label('Consulta em andamento','Checking forecast');
 
 
 Promise.all(praias.map(p=>{
@@ -214,7 +225,8 @@ Promise.all(praias.map(p=>{
     const h=validHeight(cur.wave_height)?cur.wave_height:null, per=numeric(cur.wave_period), dir=numeric(cur.wave_direction), sst=numeric(cur.sea_surface_temperature);
     const wind=numeric(cc.wind_speed_10m), wdir=numeric(cc.wind_direction_10m), gust=numeric(cc.wind_gusts_10m);
     const cls=clsFor(h), lbl=lblFor(h);
-    if(h!==null)grid.insertAdjacentHTML('beforeend',`<div class="card"><h2>🏖️ ${r.p.nome}</h2><div class="big">${h!=null?h.toFixed(1)+' m':'—'}</div><div class="muted">ondas · período ${per!=null?per.toFixed(0)+' s':'—'} · direção ${dir!=null?dirCompass(dir):'—'}</div><div class="meta">${sst!=null?`<span>🌡️ água ${sst.toFixed(1)}°C</span>`:''}${wind!=null?`<span>💨 ${wind.toFixed(0)} km/h ${wdir!=null?dirCompass(wdir):''}</span>`:''}${gust!=null?`<span>🌬️ rajadas ${gust.toFixed(0)} km/h</span>`:''}</div><span class="badge ${cls}">${lbl}</span><p class="muted">Horário da previsão de ondas: ${modelTime(cur.time)} (America/Sao_Paulo). Vento: ${modelTime(cc.time)}. Não é medição local.</p></div>`);
+    const beachName = english ? r.p.nome.replace(/^Região de (.+)$/, '$1 area') : r.p.nome;
+    if(h!==null)grid.insertAdjacentHTML('beforeend',`<div class="card"><h2>🏖️ ${beachName}</h2><div class="big">${h!=null?h.toFixed(1)+' m':'—'}</div><div class="muted">${label('ondas · período','waves · period')} ${per!=null?per.toFixed(0)+' s':'—'} · ${label('direção','direction')} ${dir!=null?dirCompass(dir):'—'}</div><div class="meta">${sst!=null?`<span>🌡️ ${label('água','water')} ${sst.toFixed(1)}°C</span>`:''}${wind!=null?`<span>💨 ${wind.toFixed(0)} km/h ${wdir!=null?dirCompass(wdir):''}</span>`:''}${gust!=null?`<span>🌬️ ${label('rajadas','gusts')} ${gust.toFixed(0)} km/h</span>`:''}</div><span class="badge ${cls}">${lbl}</span><p class="muted">${label('Horário da previsão de ondas','Wave forecast time')}: ${modelTime(cur.time)} (America/Sao_Paulo). ${label('Vento','Wind')}: ${modelTime(cc.time)}. ${label('Não é medição local.','Model forecast, not a local observation.')}</p></div>`);
 
     const d=r.m.daily;
     if(d&&Array.isArray(d.time)&&Array.isArray(d.wave_height_max)&&d.time.length===d.wave_height_max.length&&d.wave_height_max.some(validHeight)){
@@ -222,7 +234,7 @@ Promise.all(praias.map(p=>{
         diasHeader=true;
         d.time.forEach(t=>{const dt=new Date(t+'T12:00:00');fhead.insertAdjacentHTML('beforeend',`<th>${DIAS[dt.getDay()]} ${dt.getDate()}/${dt.getMonth()+1}</th>`);});
       }
-      let row=`<tr><td class="bname">${r.p.nome}</td>`;
+      let row=`<tr><td class="bname">${beachName}</td>`;
       d.wave_height_max.forEach(value=>{
         const hh=validHeight(value)?value:null;
         const c=hh==null?'':hh<0.8?'cell-boa':hh<1.5?'cell-ok':'cell-ruim';
@@ -233,12 +245,21 @@ Promise.all(praias.map(p=>{
     }
   });
   const currentCount=grid.children.length, dailyCount=fbody.children.length;
-  if(!grid.children.length)grid.innerHTML='<p class="muted">Não foi possível carregar agora. Tente novamente.</p>';
-  if(!fbody.children.length)fbody.innerHTML='<tr><td class="muted" style="padding:16px">Previsão indisponível no momento.</td></tr>';
+  if(!grid.children.length)grid.innerHTML=label('<p class="muted">Não foi possível carregar agora. Tente novamente.</p>','<p class="muted">Forecast unavailable. Please try again.</p>');
+  if(!fbody.children.length)fbody.innerHTML=label('<tr><td class="muted" style="padding:16px">Previsão indisponível no momento.</td></tr>','<tr><td class="muted" style="padding:16px">Forecast currently unavailable.</td></tr>');
   const checkedAt=new Date().toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit',timeZone:'America/Sao_Paulo'});
-  document.getElementById('updated-now').textContent=currentCount||dailyCount
-    ? 'Consulta às '+checkedAt+' · Dados atuais: '+currentCount+'/'+praias.length+' praias · Previsão diária: '+dailyCount+'/'+praias.length+' (America/Sao_Paulo) · Fonte: Open-Meteo. Horário da consulta, não da medição.'
-    : 'Dados indisponíveis · Tentativa de consulta às '+checkedAt+' (America/Sao_Paulo) · Fonte: Open-Meteo';
+  const status = document.getElementById('updated-now');
+  if (currentCount || dailyCount) {
+    status.textContent = label(
+      `Consulta às ${checkedAt} · Dados atuais: ${currentCount}/${praias.length} praias · Previsão diária: ${dailyCount}/${praias.length} (America/Sao_Paulo) · Fonte: Open-Meteo. Horário da consulta, não da medição.`,
+      `Checked at ${checkedAt} · Current forecasts: ${currentCount}/${praias.length} beaches · Daily: ${dailyCount}/${praias.length} (America/Sao_Paulo) · Source: Open-Meteo. Time of request.`
+    );
+  } else {
+    status.textContent = label(
+      `Dados indisponíveis · Tentativa de consulta às ${checkedAt} (America/Sao_Paulo) · Fonte: Open-Meteo`,
+      `Data unavailable · Last attempt at ${checkedAt} (America/Sao_Paulo) · Source: Open-Meteo`
+    );
+  }
 
 }).finally(()=>{refreshInFlight=false;});
 }
@@ -248,13 +269,13 @@ document.addEventListener('visibilitychange',refreshForecast);
 setInterval(refreshForecast,60*1000);
 </script>
 <section class="faq">
-<h2>Perguntas frequentes</h2>
-<details><summary>Como funciona a previsão de surf da ASF?</summary><p>A central usa dados de modelos do Open-Meteo (marine + forecast) para mostrar altura, período e direção das ondas, vento, rajadas e temperatura da água em 8 praias do litoral norte de SP, com previsão de 7 dias.</p></details>
-<details><summary>O que significa o período da onda na previsão?</summary><p>O período é o intervalo entre ondas, em segundos. Períodos acima de 10-12s indicam swell de fundo, com ondas mais organizadas e potentes; abaixo de 8s costuma ser marol local gerado por vento.</p></details>
-<details><summary>Qual a melhor fonte de previsão de surf para o litoral norte de SP?</summary><p>Além da ASF Previsão (Open-Meteo), Surf Day Check, Windy e Windguru oferecem outras consultas de previsão. Compare horários, modelos e limitações; concordância entre fontes não garante condições seguras.</p></details>
-<details><summary>Qual a temperatura da água no litoral norte de SP?</summary><p>Varia entre cerca de 19°C no inverno e 26°C no verão. No inverno, recomenda-se roupa de neoprene 3/2mm; no verão, lycra ou short já costumam bastar.</p></details>
+<h2 data-en="Frequently asked questions">Perguntas frequentes</h2>
+<details><summary data-en="How does the ASF forecast work?">Como funciona a previsão de surf da ASF?</summary><p data-en="The centre uses Open-Meteo marine and weather models for wave height, period, direction, wind, gusts and water temperature at eight São Paulo beaches, with a seven-day outlook.">A central usa dados de modelos do Open-Meteo (marine + forecast) para mostrar altura, período e direção das ondas, vento, rajadas e temperatura da água em 8 praias do litoral norte de SP, com previsão de 7 dias.</p></details>
+<details><summary data-en="What does wave period mean?">O que significa o período da onda na previsão?</summary><p data-en="Period is the time between waves in seconds. Longer periods often indicate more organised groundswell, while short periods often reflect local wind waves.">O período é o intervalo entre ondas, em segundos. Períodos acima de 10-12s indicam swell de fundo, com ondas mais organizadas e potentes; abaixo de 8s costuma ser marol local gerado por vento.</p></details>
+<details><summary data-en="Which sources cover São Paulo’s north coast?">Qual a melhor fonte de previsão de surf para o litoral norte de SP?</summary><p data-en="Alongside ASF Forecast (Open-Meteo), consult Surf Day Check, Windy and Windguru. Compare times, models and limitations. Agreement between sources does not guarantee safe conditions.">Além da ASF Previsão (Open-Meteo), Surf Day Check, Windy e Windguru oferecem outras consultas de previsão. Compare horários, modelos e limitações; concordância entre fontes não garante condições seguras.</p></details>
+<details><summary data-en="What is the water temperature on São Paulo’s north coast?">Qual a temperatura da água no litoral norte de SP?</summary><p data-en="Water temperature ranges from around 19°C in winter to 26°C in summer. Check the current model forecast for your beach before choosing what to wear.">Varia entre cerca de 19°C no inverno e 26°C no verão. No inverno, recomenda-se roupa de neoprene 3/2mm; no verão, lycra ou short já costumam bastar.</p></details>
 </section>
-<footer style="text-align:center;padding:18px 12px;font-size:12px;color:#567;background:transparent">ASF — Associação de Surf Feminino · <a href="https://acarolmourad-commits.github.io/asf-app/privacidade.html" style="color:#00A8CC">Privacidade</a> · <a href="https://acarolmourad-commits.github.io/asf-app/cookies.html" style="color:#00A8CC">Cookies</a> · <a href="https://acarolmourad-commits.github.io/asf-app/termos-de-uso.html" style="color:#00A8CC">Termos</a></footer>
+<footer style="text-align:center;padding:18px 12px;font-size:12px;color:#567;background:transparent">ASF — Associação de Surf Feminino · <a href="https://acarolmourad-commits.github.io/asf-app/privacidade.html" style="color:#00A8CC" data-en="Privacy">Privacidade</a> · <a href="https://acarolmourad-commits.github.io/asf-app/cookies.html" style="color:#00A8CC">Cookies</a> · <a href="https://acarolmourad-commits.github.io/asf-app/termos-de-uso.html" style="color:#00A8CC" data-en="Terms">Termos</a></footer>
 <script src="https://acarolmourad-commits.github.io/asf-app/asf-network.js" defer></script>
   <script src="https://acarolmourad-commits.github.io/asf-app/asf-redesign.js" defer></script>
 </body>
