@@ -33,5 +33,27 @@ const {chromium}=require('playwright');
  console.log('PASS isolated visual fixture',width,failed?'unavailable':'fixture');
  await page.close();
  }
+ // Exercise the existing footer link with each language, using synthetic pages only.
+ for(const width of [390,1280]) for(const english of [false,true]) {
+   const page=await browser.newPage({viewport:{width,height:900}});
+   const origin='https://previsao.asf.surf/'+(english?'?lang=en':'');
+   const destination='https://asf.surf/?lang='+(english?'en':'pt-BR')+'#forecast-home-card';
+   await page.route('**/*',route=>{
+     const url=new URL(route.request().url());
+     if(url.href===origin) return route.fulfill({contentType:'text/html',body:html.replace('<p>Mapa externo desativado nesta captura isolada.</p>','<iframe class="embed" title="Mapa isolado"></iframe>')});
+     if(url.origin==='https://asf.surf' && url.pathname==='/' && url.search===new URL(destination).search) return route.fulfill({contentType:'text/html',body:'<a id="forecast-home-card">Destino simulado</a>'});
+     return route.abort();
+   });
+   await page.goto(origin,{waitUntil:'domcontentloaded'});
+   const link=page.getByRole('link',{name:english?'Main app':'App principal',exact:true});
+   assert.equal(await link.count(),1);
+   assert.equal(await link.getAttribute('href'),destination);
+   await link.press('Tab');
+   await page.getByRole('link',{name:english?'Safety guide':'Guia de segurança',exact:true}).press('Shift+Tab');
+   assert.ok(await link.evaluate(element=>element===document.activeElement&&element.matches(':focus-visible')));
+   await link.press('Enter');
+   await page.waitForURL(destination);
+   await page.close();
+ }
  }finally{await browser.close();}
 })();

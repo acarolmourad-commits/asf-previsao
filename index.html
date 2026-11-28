@@ -171,7 +171,7 @@ frameborder="0"></iframe>
 
 <p class="muted" style="margin-top:20px">💡 <strong data-en="Tip:">Dica:</strong> <span data-en="The colours describe wave height only. Currents, wind, period and local conditions also matter. Observe the sea for 10–15 minutes when you arrive. If in doubt, stay out.">As faixas indicam apenas altura, não segurança ou adequação ao nível da surfista. Correntes, vento, período e condições locais também importam. Nenhuma previsão substitui a observação do mar. Chegue na praia, observe por 10–15 minutos e, na dúvida, não entre. 🌊</span></p>
 </main>
-<footer>🌊 ASF — Associação Surf Feminino · <a href="https://acarolmourad-commits.github.io/asf-app/" style="color:var(--primary)" data-en="Main app">App principal</a> · <a href="https://acarolmourad-commits.github.io/asf-app/aprender/correntes-de-retorno-seguranca.html" style="color:var(--primary)" data-en="Safety guide">Guia de segurança</a></footer>
+<footer>🌊 ASF — Associação Surf Feminino · <a href="https://asf.surf/?lang=pt-BR#forecast-home-card" data-en-href="https://asf.surf/?lang=en#forecast-home-card" style="color:var(--primary)" data-en="Main app">App principal</a> · <a href="https://acarolmourad-commits.github.io/asf-app/aprender/correntes-de-retorno-seguranca.html" style="color:var(--primary)" data-en="Safety guide">Guia de segurança</a></footer>
 <script>
 const english = new URLSearchParams(location.search).get('lang') === 'en';
 const label = (pt, en) => english ? en : pt;
@@ -180,6 +180,7 @@ if (english) {
   document.title = 'ASF Surf Forecast — Waves and wind for eight beaches';
   document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('[data-en]').forEach(el => { el.textContent = el.dataset.en; });
+    document.querySelectorAll('a[data-en-href]').forEach(el => { el.href = el.dataset.enHref; });
     document.querySelector('iframe.embed').title = 'Windy wind and wave forecast map';
   });
 }
